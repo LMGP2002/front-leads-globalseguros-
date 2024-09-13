@@ -1,0 +1,108 @@
+<div class="landing-container">
+  <div class="image-container">
+    <img src="imagen.png" alt="Imagen Promocional" />
+  </div>
+
+  <!-- Mostrar mensaje de agradecimiento si el formulario ha sido enviado -->
+  <div class="submitted-message" *ngIf="formSubmitted; else formTemplate">
+    <h2>Gracias por enviar tu información</h2>
+    <p>Hemos recibido tu solicitud. Nos pondremos en contacto pronto.</p>
+  </div>
+
+  <!-- Plantilla del formulario -->
+  <ng-template #formTemplate>
+    <div class="form-container">
+      <div class="title">
+        <div class="circle">1.</div>
+        <h3>Inscripción punto de venta</h3>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="create()">
+        <input
+          formControlName="nomCliente"
+          type="text"
+          id="nomCliente"
+          placeholder="Nombre del cliente"
+          [ngClass]="{'error-border': form.get('nomCliente')?.invalid && (form.get('nomCliente')?.touched || showAlert)}"
+        />
+
+        <input
+          formControlName="nit"
+          type="text"
+          id="nit"
+          placeholder="NIT"
+          [ngClass]="{'error-border': form.get('nit')?.invalid && (form.get('nit')?.touched || showAlert)}"
+        />
+
+        <input
+          formControlName="nomPunto"
+          type="text"
+          id="nomPunto"
+          placeholder="Nombre del punto"
+          [ngClass]="{'error-border': form.get('nomPunto')?.invalid && (form.get('nomPunto')?.touched || showAlert)}"
+        />
+
+        <input
+          formControlName="nomEquipo"
+          type="text"
+          id="nomEquipo"
+          placeholder="Nombre del equipo"
+          [ngClass]="{'error-border': form.get('nomEquipo')?.invalid && (form.get('nomEquipo')?.touched || showAlert)}"
+        />
+
+        <select
+          formControlName="ciudad"
+          id="ciudad"
+          [ngClass]="{'error-border': form.get('ciudad')?.invalid && (form.get('ciudad')?.touched || showAlert)}"
+        >
+          <option value="Bogotá">Bogotá</option>
+          <option value="Medellín">Medellín</option>
+          <option value="Cali">Cali</option>
+        </select>
+
+        <input
+          formControlName="rtc"
+          type="text"
+          id="rtc"
+          placeholder="RTC"
+          [ngClass]="{'error-border': form.get('rtc')?.invalid && (form.get('rtc')?.touched || showAlert)}"
+        />
+
+        <input
+          formControlName="promotor"
+          type="text"
+          id="promotor"
+          placeholder="Promotor"
+          [ngClass]="{'error-border': form.get('promotor')?.invalid && (form.get('promotor')?.touched || showAlert)}"
+        />
+
+        <input
+          formControlName="usuario"
+          type="text"
+          id="usuario"
+          placeholder="Capitán y/o Usuario (Solo minúsculas)"
+          [ngClass]="{'error-border': form.get('usuario')?.invalid && (form.get('usuario')?.touched || showAlert)}"
+        />
+
+        <div class="terms">
+          <input
+            formControlName="tratamientoDatos"
+            type="checkbox"
+            id="tratamientoDatos"
+            [ngClass]="{'error-border': form.get('tratamientoDatos')?.invalid && (form.get('tratamientoDatos')?.touched || showAlert)}"
+          />
+          <label for="tratamientoDatos">
+            He leído y acepto las políticas de Tratamiento de Datos Personales
+            <br />
+            Conoce los términos y condiciones
+          </label>
+        </div>
+
+        <div class="error" *ngIf="showAlert && getErrorMessage()">
+          {{ getErrorMessage() }}
+        </div>
+
+        <button type="submit">Siguiente</button>
+      </form>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,12 @@
+<div class="filter-container">
+  <h3>Filtrar y descargar Leads</h3>
+
+  <label for="startDate">Fecha de Inicio:</label>
+  <input id="startDate" type="date" [(ngModel)]="startDate">
+
+  <label for="endDate">Fecha de Fin:</label>
+  <input id="endDate" type="date" [(ngModel)]="endDate">
+
+  <button (click)="downloadCSV()">Descargar CSV</button>
+</div>
+
