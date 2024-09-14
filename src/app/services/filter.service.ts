@@ -11,16 +11,15 @@ export class FilterService {
   private baseUrl = 'http://localhost:8080/api/v1/leads';
   private http = inject(HttpClient);
 
-  // Método para obtener el token JWT desde el almacenamiento local
   private getToken(): string | null {
-    return localStorage.getItem('token'); // O donde sea que estés almacenando el token
+    return localStorage.getItem('token');
   }
 
   // Método para verificar si existen leads en el rango de fechas
   async checkLeadsExist(startDate: string, endDate: string): Promise<boolean> {
     const body = { startDate, endDate };
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.getToken()}`  // Incluir el token JWT
+      'Authorization': `Bearer ${this.getToken()}`
     });
 
     try {
@@ -41,12 +40,12 @@ export class FilterService {
   downloadLeadsCSV(startDate: string, endDate: string): void {
     const body = { startDate, endDate };
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.getToken()}`  // Incluir el token JWT
+      'Authorization': `Bearer ${this.getToken()}`
     });
 
     this.http.post(`${this.baseUrl}/export`, body, {
       headers,
-      responseType: 'blob', // Recibir el archivo como blob
+      responseType: 'blob',
     }).subscribe({
       next: (blob: Blob) => {
         const a = document.createElement('a');

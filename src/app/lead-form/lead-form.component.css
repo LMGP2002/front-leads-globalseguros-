@@ -139,6 +139,33 @@ button:hover {
   color: #c3ffab;
 }
 
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #5e1770;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.floating-button:hover {
+  background-color: #8562b4;
+}
+
+.floating-button i {
+  color: white;
+}
+
 /* Para pantallas medianas */
 @media (max-width: 1024px) {
   .landing-container {

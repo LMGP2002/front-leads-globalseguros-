@@ -3,6 +3,7 @@ import { FilterService } from '../services/filter.service';
 import { FormsModule } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter-leads',
@@ -17,6 +18,14 @@ export default class FilterLeadsComponent {
   endDate: string = '';    // Variable para almacenar la fecha de fin
 
   private filterService=inject(FilterService);
+  private router = inject(Router);
+
+
+  // Método para cerrar sesión
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 
 
   // Método para invocar la descarga del CSV

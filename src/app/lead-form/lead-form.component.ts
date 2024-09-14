@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { IpService } from '../services/ip.service';
 import Swal from 'sweetalert2';
 import { catchError, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,6 +20,7 @@ export default class LeadFormComponent implements OnInit {
   private leadService = inject(LeadService);
   private ipService = inject(IpService);
   private fb = inject(FormBuilder);
+  private router=inject(Router)
 
   showAlert = false; // Variable para controlar la visibilidad de la alerta de errores
   formSubmitted = false; // Variable para controlar la visibilidad del formulario
@@ -110,6 +112,10 @@ export default class LeadFormComponent implements OnInit {
       return 'Debe aceptar el tratamiento de datos.';
     }
     return null;
+  }
+
+  navigateToFilter() {
+    this.router.navigate(['/filter']);
   }
 }
 
