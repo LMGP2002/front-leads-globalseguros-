@@ -24,7 +24,7 @@ export default class FilterLeadsComponent {
   // Método para cerrar sesión
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
 
